@@ -17,6 +17,7 @@ class SwitchUserController < ApplicationController
   def remember_user
     redirect_path = SwitchUser.redirect_path.call(request, params)
     if Rails.version.to_i >= 5 && redirect_path == :back
+      redirect_to roo root_path
       redirect_back(fallback_location: root_path)
     else
       redirect_to(redirect_path)
